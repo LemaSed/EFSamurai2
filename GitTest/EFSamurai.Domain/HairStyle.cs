@@ -4,9 +4,9 @@ using System.Text;
 
 namespace EFSamurai.Domain
 {
-	 public enum QuoteStyle
+	public enum HairStyle
 	{
-		Lame, Cheesy, Awesome
-	}
+		Chonmage, Oichoo, Western
 
+	}
 }

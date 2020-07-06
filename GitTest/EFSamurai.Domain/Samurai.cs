@@ -12,5 +12,7 @@ namespace EFSamurai.Domain
 		public string Name { get; set; }
 
 		public ICollection <Quote> Quotes { get; set; }
+
+		public HairStyle? HairStyle { get; set; }
 	}
 }
