@@ -24,6 +24,7 @@ namespace EFSamurai.Data
 
 		public DbSet<BattleLog> BattleLogs;
 		public DbSet<BattleEvent> BattleEvents;
+		public DbSet<Battle> Battles;
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{

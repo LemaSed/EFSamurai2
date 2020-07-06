@@ -5,8 +5,7 @@ using System.Text;
 namespace EFSamurai.Domain
 {
 	public class SamuraiBattle
-	{
-		public int Id { get; set; }
+	{ 
 
 		//Connect foreign key from Samurai
 		public int SamuraiId { get; set; }
@@ -15,6 +14,8 @@ namespace EFSamurai.Domain
 		//Connect foreign key from Battle.
 		public int BattleId { get; set; }
 		public Battle Battle { get; set; }
+
+		
 
 
 	}

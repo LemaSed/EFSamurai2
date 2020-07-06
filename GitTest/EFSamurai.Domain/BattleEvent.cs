@@ -9,7 +9,7 @@ namespace EFSamurai.Domain
 		public int Id { get; set; }
 		public int Order { get; set; }
 		public string Summary { get; set; }
-		public string Descripion { get; set; }
+		public string Description { get; set; }
 
 		// Foreign key til BattleLog
 		public int BattleLogId { get; set; }

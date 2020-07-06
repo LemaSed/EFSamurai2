@@ -16,7 +16,7 @@ namespace EFSamurai.Domain
 
 		//Det finnes FK i BattleEvent. Dermed må "instansiere" den propertien også her. 
 		//1-M forhold mellom BattleLog og BattleEvent.
-		public BattleEvent BattleEvent { get; set; }
+		public ICollection<BattleEvent> BattleEvents { get; set; }
 
 	}
 }
