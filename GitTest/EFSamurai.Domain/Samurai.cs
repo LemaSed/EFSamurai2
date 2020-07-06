@@ -14,5 +14,7 @@ namespace EFSamurai.Domain
 		public ICollection <Quote> Quotes { get; set; }
 
 		public HairStyle? HairStyle { get; set; }
+
+		public SecretIdentity SecretIdentity { get; set; }
 	}
 }
