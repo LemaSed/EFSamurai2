@@ -4,14 +4,16 @@ using EFSamurai.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EFSamurai.Data.Migrations
 {
     [DbContext(typeof(SamuraiContext))]
-    partial class SamuraiContextModelSnapshot : ModelSnapshot
+    [Migration("20200706130040_SamuraiBattle")]
+    partial class SamuraiBattle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,54 +46,6 @@ namespace EFSamurai.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Battle");
-                });
-
-            modelBuilder.Entity("EFSamurai.Domain.BattleEvent", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BattleLogId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Descripion")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Order")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Summary")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BattleLogId")
-                        .IsUnique();
-
-                    b.ToTable("BattleEvent");
-                });
-
-            modelBuilder.Entity("EFSamurai.Domain.BattleLog", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("BattleId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BattleId")
-                        .IsUnique();
-
-                    b.ToTable("BattleLog");
                 });
 
             modelBuilder.Entity("EFSamurai.Domain.Quote", b =>
@@ -172,24 +126,6 @@ namespace EFSamurai.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("SecretIdentity");
-                });
-
-            modelBuilder.Entity("EFSamurai.Domain.BattleEvent", b =>
-                {
-                    b.HasOne("EFSamurai.Domain.BattleLog", "BattleLog")
-                        .WithOne("BattleEvent")
-                        .HasForeignKey("EFSamurai.Domain.BattleEvent", "BattleLogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("EFSamurai.Domain.BattleLog", b =>
-                {
-                    b.HasOne("EFSamurai.Domain.Battle", "Battle")
-                        .WithOne("BattleLog")
-                        .HasForeignKey("EFSamurai.Domain.BattleLog", "BattleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("EFSamurai.Domain.Quote", b =>
