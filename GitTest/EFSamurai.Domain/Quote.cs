@@ -12,7 +12,7 @@ namespace EFSamurai.Domain
 
 		public QuoteStyle? QuoteStyle { get; set; }
 
-		// Foreign key for Standard
+		// Foreign key for Samurai
 		public int SamuraiId { get; set; }
 		public Samurai Samurai { get; set; }
 

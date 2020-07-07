@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using EFSamurai.Data;
 using EFSamurai.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConsoleApp1
 {
@@ -10,12 +12,19 @@ namespace ConsoleApp1
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
+			AddSomeSamurais();
+
+			foreach (var s in ListAllSamuraiNames())
+			{
+				Console.WriteLine(s);
+			}
+			;
 		}
 
 		private static void AddOneSamurai()
 		{
-			var samurai = new Samurai() { Name = "Zelda", HairStyle = HairStyle.Western}; //Lagt inn hairenum properties. 
+			var samurai = new Samurai()
+				{Name = "Zelda", HairStyle = HairStyle.Western}; //Lagt inn hairenum properties. 
 
 
 			//Lager en using for å få lagt inn den nye samurai inn i databasen.
@@ -118,10 +127,10 @@ namespace ConsoleApp1
 			{
 				Name = "Ninja", HairStyle = HairStyle.Chonmage, Quotes = new List<Quote>()
 				{
-					new Quote(){Text = "FirstQuote"},
-					new Quote(){Text = "SecondQuote"},
-					new Quote(){Text = "ThirdQuote"}
-				}, 
+					new Quote() {Text = "FirstQuote"},
+					new Quote() {Text = "SecondQuote"},
+					new Quote() {Text = "ThirdQuote"}
+				},
 				SecretIdentity = new SecretIdentity() {RealName = "OleNordMan"}
 
 			};
@@ -133,6 +142,42 @@ namespace ConsoleApp1
 			}
 		}
 
+		private static void ClearDatabase()
+		{
+			using (var context = new SamuraiContext())
+			{
+				// Note: As cascading delete is on (by default), it is enough to remove Samurais and Battles.
+				//       Deleteing the rows in these two tables drags ("cascades") everything else with them.
+				context.RemoveRange(context.Samurais);
+				context.RemoveRange(context.Battles);
 
+				//To restart IDENTITY counting from the tables, do like this:
+
+				context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Samurais', RESEED, 0)");
+				context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('SecretIdentities', RESEED, 0)");
+				context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Quotes', RESEED, 0)");
+				context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Battles', RESEED, 0)");
+				context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('BattleLogs', RESEED, 0)");
+				context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('BattleEvents', RESEED, 0)");
+
+				context.SaveChanges();
+
+			}
+		}
+
+		private  static List<string> ListAllSamuraiNames()
+		{
+			List<string> samuraiNames = new List<string>();
+
+			using (var contex = new SamuraiContext())
+			{
+				foreach (string name in contex.Samurais.Select(s=> s.Name))
+				{
+					samuraiNames.Add(name);
+				}
+			}
+
+			return samuraiNames;
+		}
 	}
 }

@@ -16,5 +16,7 @@ namespace EFSamurai.Domain
 		public HairStyle? HairStyle { get; set; }
 
 		public SecretIdentity SecretIdentity { get; set; }
+
+		public ICollection<SamuraiBattle> SamuraiBattles { get; set; }
 	}
 }
