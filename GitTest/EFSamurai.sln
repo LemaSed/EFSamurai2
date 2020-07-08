@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFSamurai.Data", "ClassLibr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EFSamurai.Domain", "EFSamurai.Domain\EFSamurai.Domain.csproj", "{0B37551B-63A6-449A-BD7B-D6A8C597306D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EFSamurai.NUnitTest", "EFSamurai.NUnitTest\EFSamurai.NUnitTest.csproj", "{B56BB4AC-3A1F-4DEE-9CE4-B470B33F082B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{0B37551B-63A6-449A-BD7B-D6A8C597306D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B37551B-63A6-449A-BD7B-D6A8C597306D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B37551B-63A6-449A-BD7B-D6A8C597306D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B56BB4AC-3A1F-4DEE-9CE4-B470B33F082B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B56BB4AC-3A1F-4DEE-9CE4-B470B33F082B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B56BB4AC-3A1F-4DEE-9CE4-B470B33F082B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B56BB4AC-3A1F-4DEE-9CE4-B470B33F082B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
